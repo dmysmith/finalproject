@@ -32,7 +32,72 @@ public class Hand
     public void printFullHand()
     {
         System.out.println(hand);
-    }    
+    }
+    
+    /**
+     * This is the new hand strength algorithm. For a quick overview, see
+     * http://www.quickiwiki.com/en/Poker_Effective_Hand_Strength_(EHS)_algorithm
+     *
+     * EHS = HS * (1 - NPOT) + (1 - HS) * PPOT
+     */
+    /**
+     * TODO:
+     * replace pseudocode with real code! Wahoo!
+     */
+    public float EffectiveHandStrength()
+    {
+        public float HandStrength(ourcards, boardcards)
+        {
+            /** int ahead, tied, behind;
+             ahead = 0; tied = 0; behind = 0;
+             ourrank = Rank(ourcards, boardcards)
+             for each case(oppcards) {
+             opprank = (oppcards, boardcards)
+             if (ourrank>opprank) ahead += 1
+             else if (ourrank==opprank) tied += 1
+             else behind += 1
+             }
+             handstrength=(ahead+tied/2)/(ahead+tied+behind)
+             return(handstrength)
+             
+             */
+        }
+        
+        public float HandPotential(ourcards,boardcards){ // Hand potential array, each index represents ahead, tied, and behind.
+            /**
+             integer array HP[3][3] //initialize to 0
+             integer array HPTotal[3] //initialize to 0
+             ourrank = Rank(ourcards,boardcards)
+             //Consider all two card combinations of the remaining cards for the opponent.
+             for each case(oppcards){
+             opprank = Rank(oppcards,boardcards)
+             if(ourrank>opprank) index = ahead
+             else if(ourrank=opprank) index = tied
+             else index = behind
+             HPTotal[index] += 1
+             // All possible board cards to come.
+             for each case(turn,river){ //Final 5-card board
+             board = [boardcards,turn,river]
+             ourbest = Rank(ourcards,board)
+             oppbest = Rank(oppcards,board)
+             if(ourbest>oppbest) HP[index][ahead]+=1
+             else if(ourbest=oppbest) HP[index][tied]+=1
+             else HP[index][behind]+=1
+             }
+             }
+             //Ppot: were behind but moved ahead.
+             Ppot = (HP[behind][ahead]+HP[behind][tied]/2+HP[tied][ahead]/2)/(HPTotal[behind]+HPTotal[tied])
+             //Npot: were ahead but fell behind.
+             Npot = (HP[ahead][behind]+HP[tied][behind]/2+HP[ahead][tied]/2)/(HPTotal[ahead]+HPTotal[tied])
+             return(Ppot,Npot)
+             */
+        }
+    }
+    
+    /**
+     * This is the old hand strength algorithm.
+     */
+    
     public int getStrength()
     {
         RoyalFlush roFl= new RoyalFlush(hand);
