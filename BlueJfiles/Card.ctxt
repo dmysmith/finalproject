@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=suit\ value
+comment0.target=Card(java.lang.String,\ int)
+comment1.params=
+comment1.target=int\ returnValue()
+comment2.params=
+comment2.target=java.lang.String\ returnSuit()
+comment3.params=
+comment3.target=java.lang.String\ toString()
+comment4.params=c
+comment4.target=int\ compareTo(Card)
+numComments=5

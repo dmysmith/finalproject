@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=buyin
+comment0.target=Computer(int)
+comment1.params=bigBlind\ valueToCall\ canRaise\ betRound
+comment1.target=int\ makeBet(int,\ int,\ boolean,\ int)
+comment2.params=
+comment2.target=void\ changeScaleForInitialBet()
+comment3.params=
+comment3.target=void\ changeScaleAfterFlop()
+comment4.params=
+comment4.target=void\ changeScaleAfterTurn()
+comment5.params=
+comment5.target=void\ changeScaleAfterRiver()
+comment6.params=
+comment6.target=void\ importChances()
+numComments=7

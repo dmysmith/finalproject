@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.params=buyin
+comment0.target=Human(int)
+comment1.params=bigBlind\ needToCall\ canRaise
+comment1.target=int\ makeBet(int,\ int,\ boolean)
+numComments=2

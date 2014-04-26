@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=handToTest
+comment0.target=ThreeOfAKind(java.util.ArrayList)
+comment1.params=
+comment1.target=boolean\ isEqual()
+comment2.params=
+comment2.target=java.util.ArrayList\ getThreeOfAKind()
+numComments=3
