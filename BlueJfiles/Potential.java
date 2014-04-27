@@ -148,14 +148,12 @@ public class Hand
         ourrank = getStrength(ourcards, boardcards);
         //Consider each possible two card combination of the remaining cards.
         //TODO: track possible remaining cards
-        /*
-        for each case(oppcards) {
-            opprank = (oppcards, boardcards)
+        for (int i = 0; i < CombinationUnplayedCards().size; i++) {
+            opprank = getStrength(CombinationUnplayedCards[i], boardcards)
             if (ourrank>opprank) ahead += 1
             else if (ourrank==opprank) tied += 1
             else behind += 1 
-            }handstrength = (ahead+tied
-            */
+            }
             handstrength=(ahead+tied/2)/(ahead+tied+behind);
             return(handstrength);
         }
@@ -201,14 +199,20 @@ public class Hand
             ourrank = getStrength(ourcards,boardcards);
             //Consider all two card combinations of the remaining cards for the opponent.
             //TODO: what are the possible remaining cards?
-            /*
-            for each case(oppcards){
-                opprank = getStrength(oppcards,boardcards)
-                if(ourrank>opprank) index = ahead
-                else if(ourrank=opprank) index = tied
-                else index = behind
-                HPTotal[index] += 1
+            int index, ahead, behind, tied;
+            ahead = 0; behind = 1; tied = 2;
+            for (int i = 0; i < CombinationUnplayedCards().size; i++){
+                opprank = getStrength(CombinationUnplayedCards[i],boardcards)
+                if(ourrank>opprank) index = ahead;
+                else if(ourrank=opprank) index = tied;
+                else index = behind;
+                HPTotal[index] += 1;
                 // All possible board cards to come.
+                /** 
+                 * TODO: Diana didn't really understand this so she's planning on reviewing 
+                 * how poker works.
+                 */
+                /*
                 for each case(turn,river){ //Final 5-card board
                     board = [boardcards,turn,river]
                     ourbest = getStrength(ourcards,board)
