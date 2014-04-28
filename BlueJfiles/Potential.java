@@ -137,10 +137,6 @@ public class Hand
      * 
      * EHS = HS * (1 - NPOT) + (1 - HS) * PPOT
      */
-    /**
-     * TODO: 
-     * replace pseudocode with real code! Wahoo!
-     */
     
         public float HandStrength(Hand ourcards, Hand boardcards) 
         {
@@ -219,6 +215,13 @@ public class Hand
                 else index = behind;
                 HPTotal[index] += 1;
                 int CardsToRandomize;
+
+                /**
+                 * This is the part I haven't finished yet. Basically what needs to happen is 
+                 * the computer needs to iterate through all possible cases of board cards that 
+                 * could appear; depending on the round this means generating combinations of 1, 
+                 * 2, or 5. Pseudocode is below.
+                 */
                 // All possible board cards to come.
                 switch (TexasHoldemRunner.betRound) {
                     case 1: CardsToRandomize = 5;
