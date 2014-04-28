@@ -1,6 +1,7 @@
 
 
 import java.util.ArrayList;
+import TexasHoldemRunner.java;
 public class Potential
 {
     float Neg;
@@ -197,8 +198,8 @@ public class Hand
             for (int k = 0; k < 3; k++)
                 HPTotal[k] = 0;
             ourrank = getStrength(ourcards,boardcards);
+            
             //Consider all two card combinations of the remaining cards for the opponent.
-            //TODO: what are the possible remaining cards?
             int index, ahead, behind, tied;
             ahead = 0; behind = 1; tied = 2;
             for (int i = 0; i < CombinationUnplayedCards().size; i++){
@@ -207,12 +208,18 @@ public class Hand
                 else if(ourrank=opprank) index = tied;
                 else index = behind;
                 HPTotal[index] += 1;
+                int CardsToRandomize;
                 // All possible board cards to come.
-                /** 
-                 * TODO: Diana didn't really understand this so she's planning on reviewing 
-                 * how poker works.
-                 */
-                /*
+                switch (TexasHoldemRunner.betRound) {
+                    case 1: CardsToRandomize = 5;
+                        break;
+                    case 2: CardsToRandomize = 2;
+                        break;
+                    case 3: CardsToRandomize = 1;
+                        break;
+                    default: CardsToRandomize = 0;
+                        break;
+                }
                 for each case(turn,river){ //Final 5-card board
                     board = [boardcards,turn,river]
                     ourbest = getStrength(ourcards,board)
