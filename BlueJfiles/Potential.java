@@ -149,40 +149,50 @@ public class Hand
         ourrank = getStrength(ourcards, boardcards);
         //Consider each possible two card combination of the remaining cards.
         //TODO: track possible remaining cards
-        for (int i = 0; i < CombinationUnplayedCards().size; i++) {
-            opprank = getStrength(CombinationUnplayedCards[i], boardcards)
-            if (ourrank>opprank) ahead += 1
-            else if (ourrank==opprank) tied += 1
-            else behind += 1 
+        for (int i = 0; i < CombinationUnplayedCards.size(); i++) {
+
+            if (ourrank>opprank) {ahead += 1;}
+            else if (ourrank==opprank) {tied += 1;}
+            else {behind += 1;} 
             }
             handstrength=(ahead+tied/2)/(ahead+tied+behind);
             return(handstrength);
         }
        
-        //takes in the current list of unplayed cards, which can be updated within the other methods, as well as the hand of otherstuff, which can be the new cards
-        //picked up at every round.  just wasn't sure if it would be one card or several cards, so i just inputted a Hand.
-        public ArrayList<Pair> CombinationUnplayedCards (Hand otherStuff, ArrayList<Card> currentUnplayed) {
-            ArrayList<Pair> possibleCardPairs = new ArrayList<Pair>();
-            ArrayList<Card> unPlayedCards = new ArrayList<Card>();
-            for (int i = 0; i < currentUnplayed.size(); i++)
+        public ArrayList<ArrayList<Card>> possibleCombinations (Hand myCards, Hand boardCards, int numberOfCards) {
+            ArrayList<Card> unPlayed = new DeckOfCards();
+            ArrayList<ArrayList<Card>> allCombinations = new ArrayList<ArrayList<Card>>;
+            
+            //creates ArrayList of unplayed cards
+            for (int i = 0; i < myCards.size(); i++)
             {
-                unplayedCards.add (currentUnplayed.get(i));//constructs the list of stuff from which we compute our combinations.
+                unPlayed.remove(myCards.get(i));
             }
             
-            for (int i = 0; i < otherStuff.size(); i++)
+            for (int i = 0; i < boardCards.size(); i++)
             {
-                unplayedCards.remove (otherStuff.get(i));//adjusts this list to account for whatever just happened during this round.  for example, according to what
-                //new card the player picks up
+                unPlayed.remove(boardCards.get(i));
+            } 
+            
+            //actual generation of combinations, generated recursively
+            for (int i = 0; i < unPlayed.size(); i++){
+                if (numberOfCards = 0) 
+                {
+                    return allCombinations;
+                }
+                else 
+                {
+                    for (int j = 0; j < (possibleCombinations(unPlayed.subList(1, unPlayed.size()), numberOfCards - 1)).size(); j++) 
+                    {
+                        allCombinations.add((possibleCombinations(unPlayed.subList(1, unPlayed.size()), numberOfCards - 1)).get(j).add(unPlayed.get(j)));
+                    }
+                }
             }
             
-            for (int i = 0; i < unplayedCards.size(); i++)//generates all combinations, as Pairs.
-            {
-                for (int j = i +1; j < unplayedCards.size; j++)
-                combinationUnplayedCards.add (new Pair(unplayedCards.get(i), unplayedCards.get(j)));
-            }
+            return allCombinations;
             
-            return combinationUnplayedCards;
         }
+        
         
         public float HandPotential(Hand ourcards, Hand boardcards){ 
             // Hand potential array, each index represents ahead, tied, and behind.
