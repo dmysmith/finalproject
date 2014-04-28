@@ -4,6 +4,53 @@
  */
 public class BetCalc
 {
+   public int betAmount(float ehpot, float bold, int[] playersMoney, int ownMoney, int betMin, int betIncr){
+       float bet = 0;
+       
+       if (ehpot > 0.9)
+       {
+            bet = 0.7 + Math.random(0, boldness/2) - betMin/ownMoney;
+       }
+       elseif (ehpot > 0.7) 
+       {
+            bet = 0.3 + Math.random(0, boldness/2) - betMin/ownMoney;
+       }
+       elseif (ehpot > 0.5)
+       {
+           bet = 0.1 + Math.random(0, boldness/2) - betMin/ownMoney;
+       }
+       elseif (ehpot > 0.3)
+       {
+           bet = 0.05 + Math.random(0, boldness/2) - betMin/ownMoney;
+       }
+       else 
+       {
+           bet = 0 + Math.random(0, boldness/2) - betMin/ownMoney;
+       }
+
+           
+       if (bet < 0) 
+       {
+           return 0;
+       }
+       elseif (bet > 1)
+       {
+           return ownMoney;
+       }
+       else 
+       {
+           if (bet * ownMoney < betIncr) 
+           {
+               return betMin;
+           }
+           else
+           {
+               return bet * ownMoney + betMin;
+           }
+
+       }
+    
+    
     // takes in following parameters/variables
     // ehpot = effective hand potential value (0 - 1)
     // bold = boldness (0 - 1)
@@ -27,7 +74,7 @@ public class BetCalc
    //if bet < 0
         //0
    //elseif bet > 1
-        //return allin
+        //return ownMoney
    //else 
         //if (bet * ownMoney < betIncr) then
             //betMin
