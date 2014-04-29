@@ -4,7 +4,7 @@
  */
 public class BetCalc
 {
-   public int betAmount(float ehpot, float bold, int[] playersMoney, int ownMoney, int betMin, int betIncr){
+   public int betAmount(float ehpot, float boldness, int[] playersMoney, int ownMoney, int betMin, int betIncr){
        float bet = 0;
        
        if (ehpot > 0.9)
@@ -50,4 +50,5 @@ public class BetCalc
 
        }
     
+    }
 }

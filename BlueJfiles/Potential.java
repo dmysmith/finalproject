@@ -154,7 +154,7 @@ public class Hand
        
         public ArrayList<ArrayList<Card>> possibleCombinations (Hand myCards, Hand boardCards, int numberOfCards) {
             ArrayList<Card> unPlayed = new DeckOfCards();
-            ArrayList<ArrayList<Card>> allCombinations = new ArrayList<ArrayList<Card>>;
+            ArrayList<ArrayList<Card>> allCombinations = new ArrayList<ArrayList<Card>>();
             
             //creates ArrayList of unplayed cards
             for (int i = 0; i < myCards.size(); i++)
@@ -206,7 +206,7 @@ public class Hand
             int index, ahead, behind, tied;
             ahead = 0; behind = 1; tied = 2;
             for (int i = 0; i < CombinationUnplayedCards().size; i++){
-                opprank = getStrength(CombinationUnplayedCards[i],boardcards)
+                opprank = getStrength(CombinationUnplayedCards[i],boardcards);
                 if(ourrank>opprank) index = ahead;
                 else if(ourrank=opprank) index = tied;
                 else index = behind;
@@ -228,16 +228,16 @@ public class Hand
                 ArrayList<ArrayList<Card>> boardCombs = possibleCombinations(hand, board, CardstoRandomize);
               
                 for (ArrayList<Card> board : boardCombs) {
-                    ourbest = getStrength(ourcards,oard)
-                    oppbest = getStrength(oppcards,board)
+                    ourbest = getStrength(ourcards,board);
+                    oppbest = getStrength(oppcards,board);
                     if (ourest > oppbest) {
-                        HP[index][ahead]+=1
+                        HP[index][ahead]+=1;
                     }
                     else if (ourbest = oppbest) {
-                        HP[index][tied]+=1
+                        HP[index][tied]+=1;
                     }
                     else {
-                        HP[index][behind]+=1
+                        HP[index][behind]+=1;
                     }
                 }
                 
