@@ -1,5 +1,3 @@
-
-
 import java.util.ArrayList;
 import TexasHoldemRunner.java;
 public class Potential
@@ -144,7 +142,6 @@ public class Hand
         ahead = 0; tied = 0; behind = 0;
         ourrank = getStrength(ourcards, boardcards);
         //Consider each possible two card combination of the remaining cards.
-        //TODO: track possible remaining cards
         for (int i = 0; i < CombinationUnplayedCards.size(); i++) {
 
             if (ourrank>opprank) {ahead += 1;}
@@ -157,7 +154,7 @@ public class Hand
        
         public ArrayList<ArrayList<Card>> possibleCombinations (Hand myCards, Hand boardCards, int numberOfCards) {
             ArrayList<Card> unPlayed = new DeckOfCards();
-            ArrayList<ArrayList<Card>> allCombinations = new ArrayList<ArrayList<Card>>;
+            ArrayList<ArrayList<Card>> allCombinations = new ArrayList<ArrayList<Card>>();
             
             //creates ArrayList of unplayed cards
             for (int i = 0; i < myCards.size(); i++)
@@ -192,7 +189,7 @@ public class Hand
         
         public float HandPotential(Hand ourcards, Hand boardcards){ 
             // Hand potential array, each index represents ahead, tied, and behind.
-
+            
             int[][] HP = new int[3][3];
             //initialize to 0
             for (int i = 0; i < 3; i++)
@@ -209,19 +206,13 @@ public class Hand
             int index, ahead, behind, tied;
             ahead = 0; behind = 1; tied = 2;
             for (int i = 0; i < CombinationUnplayedCards().size; i++){
-                opprank = getStrength(CombinationUnplayedCards[i],boardcards)
+                opprank = getStrength(CombinationUnplayedCards[i],boardcards);
                 if(ourrank>opprank) index = ahead;
                 else if(ourrank=opprank) index = tied;
                 else index = behind;
                 HPTotal[index] += 1;
                 int CardsToRandomize;
-
-                /**
-                 * This is the part I haven't finished yet. Basically what needs to happen is 
-                 * the computer needs to iterate through all possible cases of board cards that 
-                 * could appear; depending on the round this means generating combinations of 1, 
-                 * 2, or 5. Pseudocode is below.
-                 */
+               
                 // All possible board cards to come.
                 switch (TexasHoldemRunner.betRound) {
                     case 1: CardsToRandomize = 5;
@@ -233,15 +224,23 @@ public class Hand
                     default: CardsToRandomize = 0;
                         break;
                 }
-                for each case(turn,river){ //Final 5-card board
-                    board = [boardcards,turn,river]
-                    ourbest = getStrength(ourcards,board)
-                    oppbest = getStrength(oppcards,board)
-                    if(ourbest>oppbest) HP[index][ahead]+=1
-                    else if(ourbest=oppbest) HP[index][tied]+=1
-                    else HP[index][behind]+=1
+                
+                ArrayList<ArrayList<Card>> boardCombs = possibleCombinations(hand, board, CardstoRandomize);
+              
+                for (ArrayList<Card> board : boardCombs) {
+                    ourbest = getStrength(ourcards,board);
+                    oppbest = getStrength(oppcards,board);
+                    if (ourest > oppbest) {
+                        HP[index][ahead]+=1;
+                    }
+                    else if (ourbest = oppbest) {
+                        HP[index][tied]+=1;
+                    }
+                    else {
+                        HP[index][behind]+=1;
+                    }
                 }
-                */
+                
             }
             //Ppot: were behind but moved ahead.
             float Ppot = (HP[behind][ahead]+HP[behind][tied]/2+HP[tied][ahead]/2)/(HPTotal[behind]+HPTotal[tied]);
@@ -251,15 +250,15 @@ public class Hand
                 Pos = Ppot;
                 Neg = Npot;
             }
-            return(Potential);
-        }
+            return(Potential)
+
+         }
         
         // incorporates handstrength and handpotential into a single score.
         public float EffectiveHandStrength()
     {
         return HandStrength * (1 - Npot) + (1 - HandStrength) * Ppot;
     }
-
     
     public void printStrength()
     {
@@ -286,7 +285,6 @@ public class Hand
     }        
     public ArrayList<Card> getBestHand()
     {
-        
         return bestHand;
     }    
     public boolean containsIndivid(ArrayList<Card> individ)
