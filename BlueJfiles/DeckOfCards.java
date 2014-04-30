@@ -116,9 +116,6 @@ public class DeckOfCards
             deck.add(twoOfClubs);
         }
         
-        
-        
-        
         public ArrayList<Card> returnDeck()
         {
             return deck;
@@ -126,7 +123,16 @@ public class DeckOfCards
         
         public void shuffleDeck()
         {
-            Collections.shuffle(deck);
+            //Collections.shuffle(deck);
+            //Using the Fisher Algorithm 
+            //Based off of http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+            for (int i = 0; i < deck.size() - 1; i++) 
+            {
+                int j = (int) (Math.random() * 52);
+                Card temp = deck.get(i);
+                deck.set(i, deck.get(j));
+                deck.set(j, temp);
+            }
         }
         
         public Card deal()
