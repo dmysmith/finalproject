@@ -204,9 +204,15 @@ dependency9.from=Straight
 dependency9.to=Card
 dependency9.type=UsesDependency
 objectbench.height=76
+<<<<<<< HEAD
+objectbench.width=1260
+package.editor.height=556
+package.editor.width=1158
+=======
 objectbench.width=1420
 package.editor.height=691
 package.editor.width=1318
+>>>>>>> 1745d7cf26304bbad7f95d2ce75ec5309d61d1a6
 package.editor.x=0
 package.editor.y=22
 package.numDependencies=68
@@ -373,13 +379,23 @@ target2.typeParameters=
 target2.width=80
 target2.x=310
 target2.y=510
+<<<<<<< HEAD
+target20.height=50
+target20.name=BetCalc
+=======
 target20.editor.height=700
 target20.editor.width=900
 target20.editor.x=40
 target20.editor.y=28
 target20.height=50
+<<<<<<< HEAD
 target20.name=Five
 target20.naviview.expanded=false
+=======
+target20.name=BetCalc
+target20.naviview.expanded=true
+>>>>>>> 1745d7cf26304bbad7f95d2ce75ec5309d61d1a6
+>>>>>>> FETCH_HEAD
 target20.showInterface=false
 target20.type=ClassTarget
 target20.typeParameters=
@@ -422,13 +438,26 @@ target23.naviview.expanded=false
 target23.showInterface=false
 target23.type=ClassTarget
 target23.typeParameters=
+<<<<<<< HEAD
 target23.width=80
 target23.x=190
 target23.y=560
+=======
+target23.width=90
+target23.x=260
+target23.y=70
+<<<<<<< HEAD
+target24.editor.height=722
+target24.editor.width=1280
+target24.editor.x=53
+target24.editor.y=4
+=======
+>>>>>>> FETCH_HEAD
 target24.editor.height=830
 target24.editor.width=720
 target24.editor.x=0
 target24.editor.y=22
+>>>>>>> 1745d7cf26304bbad7f95d2ce75ec5309d61d1a6
 target24.height=50
 target24.name=Computer
 target24.naviview.expanded=true
@@ -516,10 +545,21 @@ target3.typeParameters=
 target3.width=80
 target3.x=40
 target3.y=510
+<<<<<<< HEAD
 target30.editor.height=700
 target30.editor.width=900
 target30.editor.x=40
 target30.editor.y=28
+=======
+<<<<<<< HEAD
+target30.editor.height=722
+=======
+target30.editor.height=780
+>>>>>>> 1745d7cf26304bbad7f95d2ce75ec5309d61d1a6
+target30.editor.width=788
+target30.editor.x=162
+target30.editor.y=22
+>>>>>>> FETCH_HEAD
 target30.height=50
 target30.name=Nine
 target30.showInterface=false
